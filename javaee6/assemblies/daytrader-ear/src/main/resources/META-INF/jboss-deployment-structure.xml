@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<jboss-deployment-structure>  
+    <ear-subdeployments-isolated>false</ear-subdeployments-isolated>
+    <deployment>  
+         <dependencies>  
+        </dependencies>  
+    </deployment>
+    <sub-deployment name="web.war">
+        <dependencies>
+          <module name="org.apache.openjpa" />
+          <module name="javax.jms.api" />
+        </dependencies>
+    </sub-deployment>
+</jboss-deployment-structure>  
