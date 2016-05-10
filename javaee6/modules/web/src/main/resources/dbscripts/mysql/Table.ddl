@@ -15,12 +15,12 @@
 
 -- Each SQL statement in this file should terminate with a semicolon (;)
 -- Lines starting with the pound character (--) are considered as comments
--- DROP TABLE holdingejb;
--- DROP TABLE accountprofileejb;
--- DROP TABLE quoteejb;
--- DROP TABLE keygenejb;
--- DROP TABLE accountejb;
--- DROP TABLE orderejb;
+DROP TABLE IF EXISTS holdingejb;
+DROP TABLE IF EXISTS accountprofileejb;
+DROP TABLE IF EXISTS quoteejb;
+DROP TABLE IF EXISTS keygenejb;
+DROP TABLE IF EXISTS accountejb;
+DROP TABLE IF EXISTS orderejb;
 
 CREATE TABLE holdingejb
   (PURCHASEPRICE DECIMAL(14, 2),

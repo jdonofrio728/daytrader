@@ -7,7 +7,7 @@
     </deployment>
     <sub-deployment name="web.war">
         <dependencies>
-          <module name="org.apache.openjpa" />
+          <!-- <module name="org.apache.openjpa" /> -->
           <module name="javax.jms.api" />
         </dependencies>
     </sub-deployment>
