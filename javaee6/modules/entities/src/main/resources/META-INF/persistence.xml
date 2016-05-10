@@ -24,7 +24,9 @@
         <non-jta-data-source>jdbc/NoTxTradeDataSource</non-jta-data-source> 
         -->
 
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
         <jta-data-source>jdbc/TradeDataSource</jta-data-source>
         <non-jta-data-source>jdbc/NoTxTradeDataSource</non-jta-data-source>
         

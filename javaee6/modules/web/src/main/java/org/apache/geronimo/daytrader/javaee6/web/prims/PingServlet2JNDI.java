@@ -74,7 +74,7 @@ public class PingServlet2JNDI extends HttpServlet
             int iter = TradeConfig.getPrimIterations();
             for (int ii = 0; ii < iter; ii++) {
                 InitialContext context = new InitialContext();
-                datasource = (DataSource) context.lookup(TradeConfig.DS_NAME);
+                datasource = (DataSource) context.lookup(TradeConfig.DATASOURCE);
             }            
 
             output.append(

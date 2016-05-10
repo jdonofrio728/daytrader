@@ -52,10 +52,10 @@ public class PingServlet2MDBQueue extends HttpServlet {
 
     private static int hitCount;
 
-    @Resource(lookup = "java:/jms/QueueConnectionFactory")
+    @Resource(lookup = "jms/QueueConnectionFactory")
     private ConnectionFactory queueConnectionFactory;
 
-    @Resource(lookup = "java:/jms/TradeBrokerQueue")
+    @Resource(lookup = "jms/TradeBrokerQueue")
     private Queue tradeBrokerQueue;
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

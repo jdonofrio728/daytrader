@@ -32,6 +32,7 @@ import org.apache.geronimo.daytrader.javaee6.utils.Log;
 import org.apache.geronimo.daytrader.javaee6.utils.TradeConfig;
 
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -56,16 +57,16 @@ import javax.transaction.RollbackException;
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class TradeSLSBBean implements TradeSLSBRemote, TradeSLSBLocal {
 
-    @Resource(name = "java:/jms/QueueConnectionFactory")
+    @Resource(name = TradeConfig.QUEUE_CF)
     private QueueConnectionFactory queueConnectionFactory;
 
-    @Resource(name = "java:/jms/TopicConnectionFactory")
+    @Resource(name = TradeConfig.TOPIC_CF)
     private TopicConnectionFactory topicConnectionFactory;
 
-    @Resource(name = "java:/jms/TradeStreamerTopic")
+    @Resource(name = TradeConfig.TOPIC)
     private Topic tradeStreamerTopic;
 
-    @Resource(name = "java:/jms/TradeBrokerQueue")
+    @Resource(name = TradeConfig.QUEUE)
     private Queue tradeBrokerQueue;
 
     @PersistenceContext(unitName = "daytrader")
@@ -687,7 +688,7 @@ public class TradeSLSBBean implements TradeSLSBRemote, TradeSLSBLocal {
         return newHolding;
     }
     
-    public double investmentReturn(double investment, double NetValue) throws Exception {
+    public double investmentReturn(double investment, double NetValue) throws RemoteException {
         if (Log.doTrace()) Log.trace("TradeSLSBBean:investmentReturn");
     
         double diff = NetValue - investment;
@@ -695,7 +696,7 @@ public class TradeSLSBBean implements TradeSLSBRemote, TradeSLSBLocal {
         return ir;
     }
     
-    public QuoteDataBean pingTwoPhase(String symbol) throws Exception {
+    public QuoteDataBean pingTwoPhase(String symbol) throws RemoteException {
         try{
             if (Log.doTrace()) Log.trace("TradeSLSBBean:pingTwoPhase", symbol);
             QuoteDataBean quoteData=null;
@@ -732,7 +733,7 @@ public class TradeSLSBBean implements TradeSLSBRemote, TradeSLSBLocal {
 
             return quoteData;
         } catch (Exception e){
-            throw new Exception(e.getMessage(),e);
+            throw new RemoteException(e.getMessage(),e);
         }
     }
 

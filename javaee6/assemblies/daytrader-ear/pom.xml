@@ -31,21 +31,20 @@
    <description>Daytrader Java EE 6 EAR </description>
   
   <dependencies>
-    <dependency>
-            <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
-            <artifactId>utils</artifactId>            
-        </dependency>       
-       
-        <dependency>
-            <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
-            <artifactId>entities</artifactId>
-             </dependency>              
-           <dependency>
-            <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
-            <artifactId>web</artifactId>
-            <type>war</type>
-        </dependency>
-        </dependencies>
+      <dependency>
+          <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
+          <artifactId>utils</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
+          <artifactId>entities</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
+          <artifactId>web</artifactId>
+          <type>war</type>
+      </dependency>
+  </dependencies>
   <build>
         <plugins>
             <plugin>
@@ -56,12 +55,16 @@
                     <description>DayTrader Stock Trading Performance Benchmark Sample</description>
                     <version>5</version>
                     <modules>
+                        <jarModule>
+                            <groupId>commons-logging</groupId>
+                            <artifactId>commons-logging</artifactId>
+                            <uri>lib/commons-logging.jar</uri>
+                        </jarModule>
                         <javaModule>
                             <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
                             <artifactId>utils</artifactId>
                              <uri>lib/utils.jar</uri>
-                        </javaModule>                       
-                        
+                        </javaModule>
                         <javaModule>
                             <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
                             <artifactId>entities</artifactId>

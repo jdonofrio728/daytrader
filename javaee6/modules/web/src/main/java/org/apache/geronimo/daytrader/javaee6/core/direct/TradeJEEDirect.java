@@ -66,7 +66,7 @@ public class TradeJEEDirect implements TradeServices, TradeDBServices {
     private static String dsName = TradeConfig.DATASOURCE;
     
     
-    private static @Resource DataSource datasource;
+    private static DataSource datasource;
 
     
 
@@ -2027,7 +2027,7 @@ public class TradeJEEDirect implements TradeServices, TradeDBServices {
         }
 
         try {
-            qConnFactory = (ConnectionFactory) context.lookup("java:/jms/QueueConnectionFactory");
+            qConnFactory = (ConnectionFactory) context.lookup(TradeConfig.QUEUE_CF);
         } catch (Exception e) {
             Log
                 .error("TradeDirect:init  Unable to locate QueueConnectionFactory.\n\t -- Asynchronous mode will not work correctly and Quote Price change publishing will be disabled");
@@ -2035,7 +2035,7 @@ public class TradeJEEDirect implements TradeServices, TradeDBServices {
         }
 
         try {
-            queue = (Queue) context.lookup("java:/jms/TradeBrokerQueue");
+            queue = (Queue) context.lookup(TradeConfig.QUEUE);
         } catch (Exception e) {
             Log
                 .error("TradeDirect:init  Unable to locate TradeBrokerQueue.\n\t -- Asynchronous mode will not work correctly and Quote Price change publishing will be disabled");
@@ -2043,7 +2043,7 @@ public class TradeJEEDirect implements TradeServices, TradeDBServices {
         }
 
         try {
-            tConnFactory = (ConnectionFactory) context.lookup("java:/jms/TopicConnectionFactory");
+            tConnFactory = (ConnectionFactory) context.lookup(TradeConfig.TOPIC_CF);
         } catch (Exception e) {
             Log
                 .error("TradeDirect:init  Unable to locate TopicConnectionFactory.\n\t -- Asynchronous mode will not work correctly and Quote Price change publishing will be disabled");
@@ -2051,7 +2051,7 @@ public class TradeJEEDirect implements TradeServices, TradeDBServices {
         }
 
         try {
-            streamerTopic = (Topic) context.lookup("java:/jms/TradeStreamerTopic");
+            streamerTopic = (Topic) context.lookup(TradeConfig.TOPIC);
         } catch (Exception e) {
             Log
                 .error("TradeDirect:init  Unable to locate TradeStreamerTopic.\n\t -- Asynchronous mode will not work correctly and Quote Price change publishing will be disabled");

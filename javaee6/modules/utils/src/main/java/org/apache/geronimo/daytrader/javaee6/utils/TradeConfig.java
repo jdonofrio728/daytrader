@@ -29,6 +29,12 @@ import java.util.Random;
 
 public class TradeConfig {
 
+    public static final String DATASOURCE = "jdbc/TradeDataSource";
+    public static final String TOPIC_CF = "jms/TopicConnectionFactory";
+    public static final String QUEUE_CF = "jms/QueueConnectionFactory";
+    public static final String TOPIC = "jms/TradeStreamerTopic";
+    public static final String QUEUE = "jms/TradeBrokerQueue";
+
     /* Trade Runtime Configuration Parameters */
     public static final int UNKNOWN = -1;
 
@@ -86,17 +92,15 @@ public class TradeConfig {
     /* Trade Database specific paramters */
     public static String JDBC_UID = null;
     public static String JDBC_PWD = null;
-    public static String DS_NAME = "java:/jdbc/TradeDataSource";
+//    public static String DS_NAME = "jdbc/TradeDataSource";
 
     /*Trade SOAP specific parameters */
-    private static String SoapURL =
-        "http://localhost:8080/daytrader/services/TradeWSServices";
+    private static String SoapURL = "http://localhost:8080/daytrader/services/TradeWSServices";
 
     /*Trade XA Datasource specific parameters */
     public static boolean JDBCDriverNeedsGlobalTransaction = false;
 
     /* Trade Config Miscellaneous itmes */
-    public static String DATASOURCE = "java:/jdbc/TradeDataSource";
     public static int KEYBLOCKSIZE = 1000;
     public static int QUOTES_PER_PAGE = 10;
     public static boolean RND_USER = true;
