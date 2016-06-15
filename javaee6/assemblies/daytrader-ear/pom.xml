@@ -68,7 +68,7 @@
                         <javaModule>
                             <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
                             <artifactId>entities</artifactId>
-                             <uri>lib/entities.jar</uri>
+                            <uri>lib/entities.jar</uri>
                         </javaModule> 
                         <webModule>
                             <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
@@ -82,6 +82,21 @@
                     -->
                     <resourcesDir>${project.build.outputDirectory}</resourcesDir>
                     <earSourceDirectory>${basedir}/src/main/resources</earSourceDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                	<hostname>${jboss.deploy.hostname}</hostname>
                 </configuration>
             </plugin>
         </plugins>

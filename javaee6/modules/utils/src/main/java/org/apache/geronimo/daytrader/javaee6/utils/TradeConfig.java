@@ -30,8 +30,8 @@ import java.util.Random;
 public class TradeConfig {
 
     public static final String DATASOURCE = "jdbc/TradeDataSource";
-    public static final String TOPIC_CF = "jms/TopicConnectionFactory";
-    public static final String QUEUE_CF = "jms/QueueConnectionFactory";
+    public static final String TOPIC_CF = "java:/jms/TopicConnectionFactory";
+    public static final String QUEUE_CF = "java:/jms/QueueConnectionFactory";
     public static final String TOPIC = "jms/TradeStreamerTopic";
     public static final String QUEUE = "jms/TradeBrokerQueue";
 

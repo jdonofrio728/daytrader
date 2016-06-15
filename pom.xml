@@ -296,20 +296,15 @@
                         <category>Daytrader :: Java EE 6</category>
                     </configuration>
                 </plugin>
-                
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                	<artifactId>wildfly-maven-plugin</artifactId>
+                	<version>1.1.0.Alpha8</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
-        <plugins>       
-
-            <!--<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-idea-plugin</artifactId>
-                <configuration>
-                    <jdkName>1.6</jdkName>
-                    <linkModules>true</linkModules>
-                </configuration>
-            </plugin>-->
+        <plugins>
 
         </plugins>
 
@@ -347,77 +342,38 @@
                <module>javaee6</module>  
                <module>plugins</module> 
             </modules>
+        </profile> 
+        <profile>
+        	<id>jboss</id>
+        	<activation>
+        		<property>
+        			<name>appserver</name>
+        			<value>jboss</value>
+        		</property>
+        	</activation>
+        	<properties>
+        		<daytrader.persistence.provider>org.hibernate.ejb.HibernatePersistence</daytrader.persistence.provider>
+        	</properties>
+        	<modules>
+	        	<module>javaee6</module>  
+	            <module>plugins</module>
+            </modules> 
         </profile>
         <profile>
-            <id>no-plugin</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>        
-                <property>
-                    <name>buildPlugin</name>
-                    <value>false</value>
-                </property>        
-            </activation>
-            <properties>
-                <jboss.mapping>DB2</jboss.mapping>
-            </properties>
-            <modules>               
-                <!-- Daytrader Java EE 6 -->
-               <module>javaee6</module>
-               <module>plugins</module>                 
-            </modules>
-        </profile>             
-
-        <profile>
-            <id>jboss-mysql</id>
-            <activation>
-                <property>
-                    <name>database</name>
-                    <value>mysql</value>
-                </property>
-            </activation>
-            <properties>
-                <jboss.mapping>mySQL</jboss.mapping>
-            </properties>
+        	<id>weblogic</id>
+        	<activation>
+        		<property>
+        			<name>appserver</name>
+        			<value>weblogic</value>
+        		</property>
+        	</activation>
+        	<properties>
+        		<daytrader.persistence.provider>org.eclipse.persistence.jpa.PersistenceProvider</daytrader.persistence.provider>
+        	</properties>
+        	<modules>
+	        	<module>javaee6</module>  
+	            <module>plugins</module>
+            </modules> 
         </profile>
-        
-        <profile>
-            <id>db2</id>
-            <modules>
-                <module>plugins/daytrader-db2-datasource</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>oracle</id>
-            <modules>
-                <module>plugins/daytrader-oracle-datasource</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>mysql</id>
-            <modules>
-                <module>plugins/daytrader-mysql-datasource</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>informix</id>
-            <modules>
-                <module>plugins/daytrader-informix-datasource</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>sqlserver</id>
-            <modules>
-                <module>plugins/daytrader-sqlserver-datasource</module>
-            </modules>
-        </profile>    
-        <profile>
-            <id>postgre</id>
-            <modules>
-                <module>plugins/daytrader-postgre-datasource</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>none</id>
-            </profile>       
     </profiles> 
 </project>

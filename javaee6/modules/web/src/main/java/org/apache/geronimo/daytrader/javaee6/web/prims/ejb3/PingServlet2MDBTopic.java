@@ -52,10 +52,10 @@ public class PingServlet2MDBTopic extends HttpServlet {
 
     private static int hitCount;
 
-    @Resource(lookup = "jms/TopicConnectionFactory")
+    @Resource(lookup = TradeConfig.TOPIC_CF)
     private ConnectionFactory topicConnectionFactory;
 
-    @Resource(lookup = "jms/TradeStreamerTopic")
+    @Resource(name = TradeConfig.TOPIC)
     private Topic tradeStreamerTopic;
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
